@@ -24,7 +24,7 @@ POTATOES.movies.index = ( function(){
     $movieRow.append( $movieTitle )
             .append( $movieReleaseDate );
 
-    $table.append( $movieRow );
+    $table.prepend( $movieRow );
   };
 
   var init = function() {
@@ -36,14 +36,45 @@ POTATOES.movies.index = ( function(){
     });
   };
 
+  var attachMovieListeners = function(){
+    _ajaxFormListener();
+  };
+
+  var _ajaxFormListener = function(){
+
+    $("form[data-ajaxremote='true']").submit( function( event ){
+
+      event.preventDefault();
+
+      var $el = $( event.target );
+      var formData = $el.serializeArray();
+
+      $.ajax({
+        url: $el.attr("action"),
+        method: "POST",
+        data: formData,
+        dataType: "json",
+        success: function( data ){
+          console.log( "Success!" );
+          _buildRow( data );
+        }
+      });
+      console.log('no reload');
+    });
+  };
+
+
   return {
-    init: init
+    init: init,
+    attachMovieListeners: attachMovieListeners
   };
 
 })();
 
 $( document ).ready( function(){
 
-  POTATOES.movies.index.init();
-
+  if( $("#movies-index").length ){
+    POTATOES.movies.index.init();
+    POTATOES.movies.index.attachMovieListeners();
+  }
 });
