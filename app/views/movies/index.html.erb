@@ -1,0 +1,21 @@
+<h2>Smelly Potatoes Movies</h2>
+
+<hr>
+<%# render partial: "post_form", locals: { post: Post.new } %>
+<hr>
+
+<h3>Movie List</h3>
+
+<table data-content = "movies" >
+
+  <thead>
+    <th>Title</th>
+    <th>Release Date</th>
+  </thead>
+  <tbody>
+
+    <%# render @posts %>
+
+  </tbody>
+
+</table>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  review_name: MyString
+  title: MyString
+  review_text: MyText
+  review_date: 2017-02-27
+  movie: one
+
+two:
+  review_name: MyString
+  title: MyString
+  review_text: MyText
+  review_date: 2017-02-27
+  movie: two
