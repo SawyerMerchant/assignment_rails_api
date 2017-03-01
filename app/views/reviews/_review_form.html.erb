@@ -1,0 +1,21 @@
+<%= form_for review do |f| %>
+
+  <%= f.label :reviewer %>
+  <%= f.text_field :reviewer_name %>
+  <br>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :review_text %>
+  <%= f.text_field :review_text %>
+  <br>
+  <%= f.label :movie %>
+  <%= f.collection_select :movie_id, Movie.all, :id, :title %>
+  <br>
+  <%= f.label :review_date %>
+  <%= f.date_field :review_date, value: Time.now.strftime('%Y-%m-%d') %>
+  <br>
+
+  <%= f.submit %>
+
+<% end %>

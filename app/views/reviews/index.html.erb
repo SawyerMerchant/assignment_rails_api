@@ -1,0 +1,26 @@
+<h2>Smelly Potatoes Reviews</h2>
+
+<hr>
+<h3>Create a Review</h3>
+<%= render partial: "review_form", locals: { review: Review.new } %>
+<hr>
+
+<h3>All Reviews</h3>
+
+<table data-content = "reviews" >
+
+  <thead>
+    <th>Movie Reviewed</th>
+    <th>Reviewer</th>
+    <th>Title</th>
+    <th>Review Text</th>
+    <th>Review Date</th>
+    <th>Delete</th>
+  </thead>
+  <tbody>
+
+    <%= render @reviews %>
+
+  </tbody>
+
+</table>
