@@ -14,9 +14,9 @@ class ReviewsController < ApplicationController
       #
       #   format.json { render  json: @movie,
       #                         status: :created }
-      #
-      #   format.js { render :create_success }
-      #
+
+        format.js { render :create_success }
+
       end
 
     else
@@ -29,9 +29,9 @@ class ReviewsController < ApplicationController
       #
       #   format.json { render nothing: true,
       #                        status: 400 }
-      #
-      #   format.js { render :new }
-      #
+
+        format.js { render :new }
+
       end
     end
 
@@ -39,9 +39,20 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @review.destroy
 
-    redirect_to reviews_path
+    if @review.destroy
+      flash[:success] = "Review deleted"
+      respond_to do |format|
+        format.html { redirect_to reviews_path }
+        format.js { render :delete }
+      end
+    else
+      flash[:error] = "Review could not be created"
+      respond_to do |format|
+        format.html { redirect_to reviews_path }
+        format.js
+      end
+    end
   end
 
 

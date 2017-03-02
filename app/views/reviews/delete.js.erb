@@ -1,0 +1,7 @@
+if ($('body').attr('id') === "reviews-index") {
+  var $reviewRow = $('tr[data-id=<%= @review.id %>]');
+  console.log($reviewRow);
+  $reviewRow.first().remove();
+
+  $('#flash-messages').html("<%= j(render partial: 'shared/flash') %>").slideDown();
+}
