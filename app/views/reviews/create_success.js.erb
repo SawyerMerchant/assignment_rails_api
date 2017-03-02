@@ -1,21 +1,16 @@
-// app/views/posts/create_success.js.erb
-
-// Use the _post.html.erb Post partial to
-//   generate the new row
-// Recall that `j` is a shortcut for `escape_javascript`
-// Also note that we need the explicit path to
-//   the partial.
-var reviewRow = "<%= j( render partial: "review", locals: { review: @review } ) %>"
-var $reviewRow = $( reviewRow );
+(function(){
+  var reviewRow = "<%= j( render partial: "review", locals: { review: @review } ) %>"
+  var $reviewRow = $( reviewRow );
 
 
-// Identify our Post tables using the function
-//   provided by our PostModule and prepend them
-//   with our post partial (a row)
-var $table = ReviewModule.getReviewTable();
-$table.prepend( $reviewRow );
+  var $table = ReviewModule.getReviewTable();
+  $table.prepend( $reviewRow );
 
 
-// Render the flash message partial as well
-$("#flash-messages").html("<%= escape_javascript(render partial: 'shared/flash') %>").slideDown();
-<% flash.clear %>
+  // Render the flash message partial as well
+  $("#flash-messages").html("<%= escape_javascript(render partial: 'shared/flash') %>").slideDown();
+  <% flash.clear %>
+
+  var $forms = $('#new_review')
+  $($forms)[0].reset();
+})();

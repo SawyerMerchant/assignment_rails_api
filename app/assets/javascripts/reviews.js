@@ -72,7 +72,7 @@ var ReviewModule = ( function() {
             .append( $reviewDate );
 
     // Insert into all Post tables
-    $tables.prepend( $reviewRow );
+    $tables.append( $reviewRow );
 
   };
 
